@@ -1,0 +1,17 @@
+{
+  "actorSpecification": 1,
+  "name": "global-inventory-heatmap",
+  "title": "Global Inventory Heatmap",
+  "description": "Monitors out-of-stock status across regions for logistics planning. Supports API partner mode (preferred) and browser mode for authorized accounts.",
+  "version": "0.0.1",
+  "meta": {
+    "templateId": "ai-generated-actor",
+    "generatedBy": "GitHub Copilot (copilot)"
+  },
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  },
+  "dockerfile": "../Dockerfile"
+}

@@ -1,0 +1,98 @@
+{
+  "title": "Input schema for Global Inventory Heatmap",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "mode": {
+      "title": "Mode",
+      "type": "string",
+      "description": "How to fetch inventory: 'api' uses partner endpoints (preferred); 'browser' logs in and scrapes pages (authorized accounts only).",
+      "default": "api",
+      "enum": ["api", "browser"]
+    },
+    "apiBaseUrl": {
+      "title": "API base URL",
+      "type": "string",
+      "description": "Partner API base URL (used when mode='api'). Example: https://partner.example.com/api",
+      "default": ""
+    },
+    "apiTokenKvKey": {
+      "title": "API token KVS key",
+      "type": "string",
+      "description": "KVS key where API token is stored",
+      "default": "INVENTORY_API_TOKEN"
+    },
+    "startUrls": {
+      "title": "Start URLs (browser mode)",
+      "type": "array",
+      "editor": "requestListSources",
+      "prefill": [{ "url": "https://your-site.example/inventory" }]
+    },
+    "loginUrl": {
+      "title": "Login URL (browser mode)",
+      "type": "string",
+      "default": "https://your-site.example/login"
+    },
+    "credentialsKvKey": {
+      "title": "Credentials KV key (browser mode)",
+      "type": "string",
+      "default": "INVENTORY_CREDENTIALS",
+      "description": "KVS key with JSON { \"username\": \"...\", \"password\": \"...\" }"
+    },
+    "selectors": {
+      "title": "Selectors (browser mode)",
+      "type": "object",
+      "default": {
+        "row": ".inventory-row",
+        "region": ".region",
+        "sku": ".sku",
+        "stock": ".stock-status",
+        "stockNumeric": ".stock-qty"
+      },
+      "description": "CSS selectors to extract inventory rows in browser mode"
+    },
+    "regions": {
+      "title": "Regions",
+      "type": "array",
+      "description": "List of region codes/names to monitor",
+      "default": ["US", "EU", "APAC"]
+    },
+    "oosThreshold": {
+      "title": "Out-of-stock threshold",
+      "type": "integer",
+      "description": "Numeric threshold for considering OOS (<=).",
+      "default": 0
+    },
+    "maxRequestsPerCrawl": {
+      "title": "Max requests per crawl",
+      "type": "integer",
+      "default": 1000
+    },
+    "concurrency": {
+      "title": "Max concurrency (browser instances)",
+      "type": "integer",
+      "default": 3
+    },
+    "screenshot": {
+      "title": "Save screenshots",
+      "type": "boolean",
+      "default": false
+    },
+    "webhookUrl": {
+      "title": "Webhook URL for alerts",
+      "type": "string",
+      "default": ""
+    },
+    "storagePrefix": {
+      "title": "KVS storage prefix",
+      "type": "string",
+      "default": "global-inventory"
+    },
+    "respectRobots": {
+      "title": "Respect robots.txt",
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": ["mode"]
+}

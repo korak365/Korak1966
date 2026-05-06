@@ -1,0 +1,26 @@
+{
+  "name": "global-inventory-heatmap",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Monitors Out-of-Stock status across regions for logistics planning (API or browser mode).",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "apify": "^3.4.2",
+    "crawlee": "^3.13.8",
+    "playwright": "^1.38.0",
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "@apify/eslint-config": "^1.0.0",
+    "eslint": "^9.29.0",
+    "prettier": "^3.5.3"
+  },
+  "scripts": {
+    "start": "node src/main.js",
+    "format": "prettier --write ."
+  },
+  "author": "Global Inventory Heatmap",
+  "license": "ISC"
+}

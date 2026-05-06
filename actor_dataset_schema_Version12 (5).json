@@ -1,0 +1,29 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "sku": { "type": "string", "description": "SKU or product identifier" },
+    "region": { "type": "string", "description": "Region code/name" },
+    "inStock": { "type": "boolean", "description": "Whether in stock (true) or out-of-stock (false)" },
+    "stockQty": { "type": "integer", "description": "Numeric stock quantity if available" },
+    "source": { "type": "string", "description": "Source URL or API endpoint" },
+    "metadata": { "type": "object", "description": "Additional metadata (raw payload)" },
+    "screenshotKey": { "type": "string", "description": "KVS key for screenshot (if saved)" },
+    "timestamp": { "type": "string", "description": "ISO 8601 timestamp" }
+  },
+  "views": {
+    "overview": {
+      "title": "Inventory Overview",
+      "transformation": { "fields": ["sku", "region", "inStock", "stockQty", "source"] },
+      "display": {
+        "component": "table",
+        "properties": {
+          "sku": { "label": "SKU", "format": "text" },
+          "region": { "label": "Region", "format": "text" },
+          "inStock": { "label": "In stock", "format": "text" },
+          "stockQty": { "label": "Qty", "format": "number" },
+          "source": { "label": "Source", "format": "link" }
+        }
+      }
+    }
+  }
+}
